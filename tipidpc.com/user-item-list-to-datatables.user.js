@@ -2,7 +2,8 @@
 // @name         TipidPC User Items To Sortable Table
 // @description  Transforms the User's Items for Sale list to sortable and searchable table
 // @namespace    https://github.com/rainniel/tampermonkey-scripts
-// @version      1.0.0
+// @supportURL   https://github.com/rainniel/tampermonkey-scripts/issues
+// @version      1.0
 // @author       Rainniel
 // @license      MIT
 // @match        https://tipidpc.com/useritems.php*
@@ -16,17 +17,17 @@
     'use strict';
 
     GM_addStyle(`
-            .item-manager {
-                display: none !important;
-            }
-        `);
+        .item-manager {
+            display: none !important;
+        }
+    `);
 
     var $ = unsafeWindow.jQuery;
 
     $(document).ready(function () {
         var dataTablesCss = document.createElement('link');
         dataTablesCss.rel = 'stylesheet';
-        dataTablesCss.href = 'https://cdn.datatables.net/2.1.3/css/dataTables.dataTables.min.css';
+        dataTablesCss.href = 'https://cdn.datatables.net/2.2.2/css/dataTables.dataTables.min.css';
         document.head.appendChild(dataTablesCss);
 
         var pad10Div = $('.pad10');
