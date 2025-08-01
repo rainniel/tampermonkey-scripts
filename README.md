@@ -18,5 +18,8 @@ All scripts are published on:
 #### genshin-impact-map.appsample.com
 - [Genshin Impact Interactive World Map Enhancements](https://greasyfork.org/en/scripts/527939-genshin-impact-interactive-world-map-enhancements)
 
+#### mymeralco.com.ph
+- [My Meralco Accounts Table](https://greasyfork.org/en/scripts/544312-my-meralco-accounts-table)
+
 #### tipidpc.com
 - [TipidPC User Items To Sortable Table](https://greasyfork.org/en/scripts/527175-tipidpc-user-items-to-sortable-table)

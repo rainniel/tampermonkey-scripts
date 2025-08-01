@@ -1,0 +1,3 @@
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/D1D21B26LX)
+
+The My Meralco website doesn't allow text selection and copying. If you're paying online through another payment channel, you can't simply copy and paste the account details into the payment browser tab, you have to type them manually, which becomes more difficult and prone to error especially when managing multiple accounts. This script creates a table of the account(s) with the necessary fields for payment, where you are free to drag, select, and copy text.
