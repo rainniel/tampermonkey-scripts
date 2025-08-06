@@ -178,28 +178,21 @@
             let totalAmount = 0;
 
             items.forEach(item => {
-                const date = new Date(item.due_date);
-                const formattedDate = date.toLocaleDateString('en-US', {
-                    year: 'numeric', month: 'short', day: 'numeric'
-                });
-
-                totalAmount += item.amount;
+                totalAmount += fixAmount(item.amount);
 
                 tableBody += `
                     <tr>
                         <td class="default-cell">${item.alias}</td>
                         <td class="right-cell">${item.can}</td>
-                        <td class="amount-cell">
-                            ${item.amount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
-                        </td>
+                        <td class="amount-cell">${formatAmount(item.amount)}</td>
                         <td class="amount-button">
-                            <button class="amount-button" title="Copy Amount" data-copy="${item.amount}" onclick="navigator.clipboard.writeText(this.dataset.copy)">
+                            <button class="amount-button" title="Copy Amount" data-copy="${fixAmount(item.amount)}" onclick="navigator.clipboard.writeText(this.dataset.copy)">
                                 <svg xmlns="http://www.w3.org/2000/svg" height="12px" width="12px" viewBox="0 0 24 24" fill="currentColor">
                                     <path d="M20 2H10c-1.103 0-2 .897-2 2v4H4c-1.103 0-2 .897-2 2v10c0 1.103.897 2 2 2h10c1.103 0 2-.897 2-2v-4h4c1.103 0 2-.897 2-2V4c0-1.103-.897-2-2-2zM4 20V10h10l.002 10H4zm16-6h-4v-4c0-1.103-.897-2-2-2h-4V4h10v10z"></path>
                                 </svg>
                             </button>
                         </td>
-                        <td class="default-cell">${formattedDate}</td>
+                        <td class="default-cell">${formatDate(item.due_date)}</td>
                     </tr>
                 `;
             });
@@ -208,9 +201,7 @@
                 tableBody += `
                     <tr class="table-footer">
                         <td class="right-cell" colspan="2">Total</td>
-                        <td class="amount-cell">
-                            ${totalAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
-                        </td>
+                        <td class="amount-cell">${formatAmount(totalAmount)}</td>
                     </tr>
                 `;
             }
@@ -232,4 +223,20 @@
             document.getElementById('accounts-div-restore').style.display = 'flex';
         }
     };
+
+    function fixAmount(amount) {
+        const num = Number(amount);
+        return isNaN(num) || num < 0 ? 0 : num;
+    }
+
+    function formatAmount(amount) {
+        return fixAmount(amount).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    }
+
+    function formatDate(date) {
+        const newDate = new Date(date);
+        if (isNaN(newDate.getTime())) return "None";
+
+        return newDate.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+    }
 })();
