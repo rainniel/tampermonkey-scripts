@@ -3,7 +3,7 @@
 // @description  Creates a table view of account(s) with selectable and copyable text
 // @namespace    https://github.com/rainniel/tampermonkey-scripts
 // @supportURL   https://github.com/rainniel/tampermonkey-scripts/issues
-// @version      1.0
+// @version      1.1
 // @author       Rainniel
 // @license      MIT
 // @match        https://mymeralco.com.ph/*
@@ -234,6 +234,10 @@
     }
 
     function formatDate(date) {
+        if (typeof date === "string" && date.toLowerCase() === "immediately") {
+            return "Immediately";
+        }
+
         const newDate = new Date(date);
         if (isNaN(newDate.getTime())) return "None";
 
